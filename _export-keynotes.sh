@@ -16,12 +16,14 @@ osascript << EOF
         tell application "Keynote"
           activate
           open POSIX file "${FILE_INPUT}"
+          delay 5
           if "${EXPORT_FORMAT}" is "PDF" then
             export front document to POSIX file "${FILE_OUTPUT}" as PDF
           else if "${EXPORT_FORMAT}" is "PPTX" then
             export front document to POSIX file "${FILE_OUTPUT}" as Microsoft PowerPoint
           end if
         end tell
+        delay 5
         do shell script "killall Keynote"
       end tell
 EOF
